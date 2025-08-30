@@ -1,3 +1,4 @@
+import CardCarousel from "@/components/CardCarousel";
 import Image from "next/image";
 
 export default function Home() {
@@ -5,8 +6,8 @@ export default function Home() {
     <main className="w-full flex items-center justify-center min-h-screen ">
       <section>
         Hello HeroSection
+        <CardCarousel />
       </section>
     </main>
-    
   );
 }
