@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { CircleLoader, PuffLoader } from "react-spinners";
+import { CircleLoader, PuffLoader, RingLoader } from "react-spinners";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
@@ -59,7 +59,7 @@ const Navbar = () => {
           exit={{ opacity: 0 }}
           className="fixed inset-0 flex items-center justify-center bg-background dark:bg-background-dark z-50"
         >
-          <CircleLoader color="#2563eb" size={100} />
+          <RingLoader color="#2563eb" size={100} />
         </motion.div>
       ) : (
         <motion.nav
