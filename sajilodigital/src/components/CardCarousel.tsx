@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cards = [
@@ -43,18 +42,23 @@ export default function CardCarousel() {
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden ">
-      <div className="relative md:w-[900px] md:h-[400px] flex items-center justify-center [perspective:1600px]">
+      <div className="relative md:w-[900px] md:h-[500px] flex items-center justify-center [perspective:1600px]">
         {cards.map((card, index) => {
+          // Calculate the angle and position of each card
           const offset = (index - activeIndex + cards.length) % cards.length;
           const angle = (360 / cards.length) * offset;
+          const distance = 500; // Controls the distance between cards
+          const transformValue = `rotateY(${angle}deg) translateZ(${distance}px)`;
 
           return (
-            <motion.div
+            <div
               key={index}
-              animate={{ rotateY: angle, translateZ: 300 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
               className="absolute"
-              style={{ transformOrigin: "50% 50% -500px" }}
+              style={{
+                transformOrigin: "50% 50% -500px",
+                transform: transformValue,
+                transition: "transform 0.8s ease-in-out",
+              }}
             >
               <Card className="w-[400px] h-[500px] bg-[#1e293b] border border-blue-500 shadow-lg rounded-xxl overflow-hidden">
                 <div
@@ -73,7 +77,7 @@ export default function CardCarousel() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           );
         })}
       </div>
